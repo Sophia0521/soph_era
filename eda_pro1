@@ -1,0 +1,11 @@
+hpc<-read.table('household_power_consumption.txt',sep=';',head(TRUE))
+HpcData <-data.frame(hpc)
+HpcData$Global_active_power<-as.double(HpcData$Global_active_power)
+HpcData$Date<- as.Date(HpcData$Date)
+plot1<- hist(HpcData$Global_active_power, 
+             col="red",
+             xlab ="Global_active_power(kilowatts)",
+             main = "Global_active_power" )
+
+HpcData$weekdate<-weekdays(HpcData$Date)
+plot2<-plot(HpcData$weekdate,HpcData$Global_active_power,ylab ="Global_active_power(kilowatts)")e
